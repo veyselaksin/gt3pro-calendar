@@ -1,0 +1,79 @@
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: #262626;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.head {
+    width: 100%;
+    height: 25%;
+    background-color: #038C7F;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.month-text, .year-text, .week-header{
+    color: #F2E7DC;
+}
+
+.week-container {
+    flex-wrap: wrap;
+    display: flex;
+    height: 30%;
+    width: 70%;
+    background-color: #038C7F;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.week-day {
+    display: flex;
+    height: 100%;
+    width: 14%;
+    text-align: center;
+    justify-content: center;
+    background-color:#038C7F;
+    color: #F2E7DC;
+}
+
+.day-container {
+    flex-wrap: wrap;
+    display: flex;
+    height: 60%;
+    width: 70%;
+    margin-top: 10px;
+    background-color: #262626;
+    flex-direction: row;
+    align-items: center;
+}
+
+.day{
+    width: 14%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #262626;
+    color: #F2E7DC;
+}
+
+.day-text {
+    color: #F2E7DC;
+}
+
+.active-day {
+    width: 100%;
+    height: 75%;
+    text-align: center;
+    background-color: #F2E7DC;
+    border-radius: 8px;
+    color: #038C7F;
+}
+
+.weekend{
+    color: #038C7F;
+}

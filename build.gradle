@@ -1,0 +1,50 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.huawei.ohos.app'
+
+//For instructions on signature configuration, see https://developer.harmonyos.com/en/docs/documentation/doc-guides/ide_debug_device-0000001053822404#EN-US_TOPIC_0000001154985555__section1112183053510
+ohos {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/veyselaksin/Desktop/calendar.p12')
+            storePassword '0000001924602425DFE46B09426A99D8DFA7D69BEAB3F6DD8DC190D0E2F51D77EB183D454A96AD23F0'
+            keyAlias = 'calendar'
+            keyPassword '00000019F3D7582B0F361DE2DA286A1D072D40B602A190FC465DBF5BA9727151346A169145112E293D'
+            signAlg = 'SHA256withECDSA'
+            profile file('/Users/veyselaksin/Downloads/calendarDebug.p7b')
+            certpath file('/Users/veyselaksin/Downloads/calendar.cer')
+        }
+    }
+    compileSdkVersion 5
+    defaultConfig {
+        compatibleSdkVersion 5
+    }
+}
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://repo.huaweicloud.com/repository/maven/'
+        }
+        maven {
+            url 'https://developer.huawei.com/repo/'
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.huawei.ohos:hap:2.4.4.2'
+        classpath 'com.huawei.ohos:decctest:1.2.4.0'
+        classpath 'com.huawei.agconnect:agcp-harmony:1.0.0.300'
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url 'https://repo.huaweicloud.com/repository/maven/'
+        }
+        maven {
+            url 'https://developer.huawei.com/repo/'
+        }
+        jcenter()
+    }
+}

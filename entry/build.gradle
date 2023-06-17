@@ -1,0 +1,37 @@
+apply plugin: 'com.huawei.ohos.hap'
+apply plugin: 'com.huawei.ohos.decctest'
+//For instructions on signature configuration, see https://developer.harmonyos.com/en/docs/documentation/doc-guides/ide_debug_device-0000001053822404#EN-US_TOPIC_0000001154985555__section1112183053510
+ohos {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/veyselaksin/Desktop/calendar.p12')
+            storePassword '000000190ADE7FD949FE0D6C5A0389A42989628F0A373EEAE4F57B6B1C3CFC0B21911C80608A37438C'
+            keyAlias = 'calendar'
+            keyPassword '0000001930A58BE6FCA56D48A7AAF2012C3063DE429CCB9678727833FC9B5DE190EF865F9C156301DE'
+            signAlg = 'SHA256withECDSA'
+            profile file('/Users/veyselaksin/Downloads/calendarDebug.p7b')
+            certpath file('/Users/veyselaksin/Downloads/calendar.cer')
+        }
+    }
+    compileSdkVersion 5
+    defaultConfig {
+        compatibleSdkVersion 5
+    }
+    buildTypes {
+        release {
+            proguardOpt {
+                proguardEnabled false
+                rulesFiles 'proguard-rules.pro'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+}
+decc {
+    supportType = ['html', 'xml']
+}
+

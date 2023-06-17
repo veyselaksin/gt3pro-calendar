@@ -1,0 +1,12 @@
+{
+ "1.0.0": {
+  "LastPreviewDevice": {
+   "/Users/veyselaksin/DevEcoStudioProjects/calendar/entry/build/intermediates/res/debug": [
+    "liteWearable"
+   ],
+   "/Users/veyselaksin/DevEcoStudioProjects/calendar/entry/.preview/intermediates/res/debug": [
+    "liteWearable"
+   ]
+  }
+ }
+}

@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="head">
+        <text class="month-text">{{currentMonthStr}}</text>
+        <text class="year-text" on:swipe="selectYear">{{currentYear}}</text>
+        <div class="week-container">
+            <text class="week-day">S</text>
+            <text class="week-day">M</text>
+            <text class="week-day">T</text>
+            <text class="week-day">W</text>
+            <text class="week-day">T</text>
+            <text class="week-day">F</text>
+            <text class="week-day">S</text>
+        </div>
+    </div>
+    <div class="day-container" on:swipe="touchMove">
+        <div class="day" style="height: {{rowBasedHeight}}%;" for="{{val in days}}" tid="id">
+            <text class="active-day" if="{{ currentYear === new Date().getFullYear() && currentMonth === new Date().getMonth() && val === activeDay}}">
+                {{val}}
+            </text>
+            <text class="day-text" else>
+                {{val}}
+            </text>
+        </div>
+    </div>
+</div>
