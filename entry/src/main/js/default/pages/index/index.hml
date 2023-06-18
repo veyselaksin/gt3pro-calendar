@@ -13,8 +13,17 @@
         </div>
     </div>
     <div class="day-container" on:swipe="touchMove">
-        <div class="day" style="height: {{rowBasedHeight}}%;" for="{{val in days}}" tid="id">
+        <div class="day" for="{{val in days}}" tid="id">
             <text class="active-day" if="{{ currentYear === new Date().getFullYear() && currentMonth === new Date().getMonth() && val === activeDay}}">
+                {{val}}
+            </text>
+            <text class="exceptMonth" elif="{{index < day || index > lastDate + day - 1}}">
+                {{val}}
+            </text>
+            <text class="weekend" elif="{{index % 7 == 0}}">
+                {{val}}
+            </text>
+            <text class="weekend" elif="{{index % 7 == 6}}">
                 {{val}}
             </text>
             <text class="day-text" else>

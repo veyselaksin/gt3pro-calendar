@@ -1,61 +1,58 @@
 export default {
     data:{
-        weekDays: ["S", "M", "T", "W", "T", "F", "S"],
         currentMonthStr: "",
         currentMonth: "",
         currentYear: "",
-        firstDay: "",
-        daysInMonth: "",
         months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         days: [],
-        activeDay: 0,
-        rowBasedHeight: 20,
-        weekendColor: "#038C7F",
+        activeDay: "",
+        daysLength: "",
+        prevDays: "",
+        lastDate: "",
+        day: "",
+        nextDaysCount: 7,
     },
 
     onInit(){
         let today = new Date();
-
         this.currentMonth = today.getMonth();
         this.currentMonthStr = this.months[this.currentMonth];
         this.currentYear = today.getFullYear();
         this.currentDay = today.getDate();
 
-        this.showCalendar(this.currentMonth, this.currentYear)
+        this.showCalendar(this.currentMonth, this.currentYear);
+        this.daysLength = this.days.length;
     },
 
     showCalendar(month, year) {
-        const prevDays = new Date(this.currentYear, this.currentMonth, 0).getDate();
-        const lastDate = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
-        const day = new Date(this.currentYear, this.currentMonth, 1).getDay();
-        const nextDays = 7 - new Date(this.currentYear, this.currentMonth + 1, 0).getDay() - 1;
+       this.prevDays = new Date(this.currentYear, this.currentMonth, 0).getDate();
+       this.lastDate = new Date(this.currentYear, this.currentMonth + 1, 0).getDate();
+       this.day = new Date(this.currentYear, this.currentMonth, 1).getDay();
 
-        let days = []
+       let days = []
+       for (let x = this.day; x > 0; x--){
+           days.push(this.prevDays - x + 1)
+       }
 
-        for (let x = day; x > 0; x--){
-            days.push(prevDays - x + 1)
-        }
+       for (let i = 1; i <= this.lastDate; i++) {
+           if (
+           i === new Date().getDate() &&
+           year === new Date().getFullYear() &&
+           month === new Date().getMonth()
+           ) {
+               this.activeDay = i
+           }
+           days.push(i)
+           this.daysLength = days.length
+       }
 
-        for (let i = 1; i <= lastDate; i++) {
-            if (
-                i === new Date().getDate() &&
-                year === new Date().getFullYear() &&
-                month === new Date().getMonth()
-            ) {
-                this.activeDay = i
-            }
-            days.push(i)
-        }
-
-        for (let j = 1; j <= nextDays; j++) {
-            days.push(j)
-        }
-
-        if (days.length > 36){
-            this.rowBasedHeight = 16
-        } else{
-            this.rowBasedHeight = 20
-        }
+       if ( this.daysLength <= 35) {
+           this.nextDaysCount = 14
+       }
+       const nextDays = this.nextDaysCount - new Date(this.currentYear, this.currentMonth + 1, 0).getDay() - 1;
+       for (let j = 1; j <= nextDays; j++) {
+           days.push(j)
+       }
 
         this.days = days
         this.year = year
